@@ -25,10 +25,7 @@
 		}
 
 		window.addEventListener('click', (e) => {
-			console.log('click');
-
 			let increaseScore = 0;
-
 			const clickOnRaven = ctx.getImageData(e.clientX, e.clientY, 1, 1).data;
 
 			if (clickOnRaven.some((color) => color > 0)) {
