@@ -1,79 +1,84 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
+	import { onDestroy, onMount } from 'svelte';
 	import Raven from '../classes/raven';
 
 	let canvas: HTMLCanvasElement;
 	let ctx: CanvasRenderingContext2D;
 
-	onMount(() => {
-		ctx = canvas.getContext('2d')!;
+	let ravens: Raven[] = [];
+	let score = 0;
+	let timeToNextRaven = 0;
+	let ravensInterval = 500;
+	let lastTime = 0;
 
-		canvas.width = window.innerWidth;
-		canvas.height = window.innerHeight;
+	function animate(timestamp: number = 0) {
+		ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-		let timeToNextRaven = 0;
-		let ravensInterval = 500;
-		let lastTime = 0;
-		let score = 0;
+		let deltaTime = timestamp - lastTime;
+		lastTime = timestamp;
+		timeToNextRaven += deltaTime;
 
-		let ravens: Raven[] = [];
-
-		function drawScore() {
-			ctx.fillStyle = 'white';
-			ctx.font = '50px Impact';
-			ctx.fillText('Score: ' + score, 50, 75);
+		if (timeToNextRaven > ravensInterval) {
+			ravens.push(new Raven(canvas, ctx));
+			timeToNextRaven = 0;
 		}
 
-		window.addEventListener('click', (e) => {
-			let increaseScore = 0;
-			const clickOnRaven = ctx.getImageData(e.clientX, e.clientY, 1, 1).data;
+		drawScore();
 
-			if (clickOnRaven.some((color) => color > 0)) {
-				ravens = ravens.filter((raven) => {
-					if (
-						!(
-							e.clientX > raven.x &&
-							e.clientX < raven.x + raven.width + 150 &&
-							e.clientY > raven.y &&
-							e.clientY < raven.y + raven.height + 150
-						)
-					) {
-						increaseScore++;
-						return true;
-					}
-				});
-			}
-
-			if (increaseScore > 0) {
-				score++;
-			}
+		ravens.forEach((raven) => {
+			raven.update(deltaTime);
+			raven.draw();
 		});
 
-		function animate(timestamp: number = 0) {
-			ctx.clearRect(0, 0, canvas.width, canvas.height);
+		ravens = ravens.filter((raven) => !raven.markedForDeletion);
 
-			let deltaTime = timestamp - lastTime;
-			lastTime = timestamp;
-			timeToNextRaven += deltaTime;
+		requestAnimationFrame(animate);
+	}
 
-			if (timeToNextRaven > ravensInterval) {
-				ravens.push(new Raven(canvas, ctx));
-				timeToNextRaven = 0;
-			}
+	function drawScore() {
+		ctx.fillStyle = 'white';
+		ctx.font = '50px Impact';
+		ctx.fillText('Score: ' + score, 50, 75);
+	}
 
-			drawScore();
+	function rmRavenAddScore(e: MouseEvent) {
+		let increaseScore = 0;
+		const clickOnRaven = ctx.getImageData(e.clientX, e.clientY, 1, 1).data;
 
-			ravens.forEach((raven) => {
-				raven.update(deltaTime);
-				raven.draw();
+		if (clickOnRaven.some((color) => color > 0)) {
+			ravens = ravens.filter((raven) => {
+				if (
+					!(
+						e.clientX > raven.x &&
+						e.clientX < raven.x + raven.width + 150 &&
+						e.clientY > raven.y &&
+						e.clientY < raven.y + raven.height + 150
+					)
+				) {
+					increaseScore++;
+					return true;
+				}
 			});
-
-			ravens = ravens.filter((raven) => !raven.markedForDeletion);
-
-			requestAnimationFrame(animate);
 		}
 
+		if (increaseScore > 0) {
+			score++;
+		}
+	}
+
+	onMount(() => {
+		if (!canvas) return;
+		ctx = canvas.getContext('2d') as CanvasRenderingContext2D;
+		canvas.width = window.innerWidth;
+		canvas.height = window.innerHeight;
+		canvas.addEventListener('click', rmRavenAddScore);
 		animate();
+	});
+
+	onDestroy(() => {
+		if (canvas) {
+			canvas.removeEventListener('click', rmRavenAddScore);
+		}
 	});
 </script>
 
