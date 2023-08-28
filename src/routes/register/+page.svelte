@@ -1,15 +1,14 @@
-<script lang="ts">
+<script>
 	import { enhance } from '$app/forms';
-	export let form;
 </script>
 
 <main>
-	<h1>Login</h1>
+	<h1>Register</h1>
 	<form method="post" use:enhance>
 		<label for="email">Email</label>
-		<input name="email" value={form?.email ?? ''} />
+		<input type="text" name="email" />
 		<label for="password">Password</label>
 		<input type="password" name="password" />
-		<button>Sign up</button>
+		<button>Register</button>
 	</form>
 </main>
