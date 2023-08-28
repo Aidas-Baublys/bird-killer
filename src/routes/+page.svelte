@@ -2,4 +2,6 @@
 	import GameCanvas from '../components/gameCanvas.svelte';
 </script>
 
-<GameCanvas />
+<!-- <GameCanvas /> -->
+
+<div>Suka</div>

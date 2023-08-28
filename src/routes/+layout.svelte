@@ -1,0 +1,11 @@
+<slot />
+
+<style>
+	:global(body) {
+		background: linear-gradient(to bottom, red, green, blue);
+		width: 100vw;
+		height: 100vh;
+		overflow: hidden;
+		margin: 0;
+	}
+</style>
