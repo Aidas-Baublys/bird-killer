@@ -90,6 +90,7 @@
 		top: 0;
 		left: 0;
 		width: 100%;
-		height: 100%;
+		height: calc(100% - 70px);
+		margin-top: 70px;
 	}
 </style>
