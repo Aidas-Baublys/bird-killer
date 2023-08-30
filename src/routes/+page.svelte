@@ -11,7 +11,11 @@
 {#if data.session}
 	<h2>Logged in as {data.session.user.email}!!!!!!!!!!</h2>
 	<section>
-		<div class="score">High Score: {score[0].score}</div>
+		{#if score.length}
+			<div class="score">High Score: {score[0].score}</div>
+		{:else}
+			<div class="score">No high score yet! Kill some birds!</div>
+		{/if}
 		<form action="/logout" method="POST">
 			<button type="submit">Logout</button>
 		</form>
