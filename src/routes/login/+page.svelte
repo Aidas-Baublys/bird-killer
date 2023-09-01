@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { enhance } from '$app/forms';
+	import { page } from '$app/stores';
 </script>
 
 <main>
@@ -11,4 +12,8 @@
 		<input type="password" name="password" />
 		<button>Login</button>
 	</form>
+	<a href="/register" class="btn btn-secondary">Register</a>
+	{#if $page.status === 400}
+		<p>{$page.form.message}</p>
+	{/if}
 </main>
