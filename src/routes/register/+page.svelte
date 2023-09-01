@@ -11,4 +11,16 @@
 		<input type="password" name="password" />
 		<button>Register</button>
 	</form>
+	<button>
+		<a href="/login" class="btn btn-primary">Login</a>
+	</button>
 </main>
+
+<style>
+	main {
+		margin: 10px;
+	}
+	button:last-of-type {
+		margin: 10px 0;
+	}
+</style>

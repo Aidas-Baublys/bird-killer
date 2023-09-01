@@ -55,9 +55,13 @@
 	</section>
 	<GameCanvas />
 {:else}
-	<div>NOT logged in!</div>
-	<a href="/login" class="btn btn-primary">Login</a>
-	<a href="/register" class="btn btn-secondary">Register</a>
+	<h2>NOT logged in!</h2>
+	<button>
+		<a href="/login" class="btn btn-primary">Login</a>
+	</button>
+	<button>
+		<a href="/register" class="btn btn-secondary">Register</a>
+	</button>
 {/if}
 
 <style>
@@ -71,6 +75,6 @@
 
 	.score,
 	button {
-		margin: 0 10px 10px;
+		margin: 10px;
 	}
 </style>

@@ -12,8 +12,19 @@
 		<input type="password" name="password" />
 		<button>Login</button>
 	</form>
-	<a href="/register" class="btn btn-secondary">Register</a>
+	<button>
+		<a href="/register" class="btn btn-secondary">Register</a>
+	</button>
 	{#if $page.status === 400}
 		<p>{$page.form.message}</p>
 	{/if}
 </main>
+
+<style>
+	main {
+		margin: 10px;
+	}
+	button:last-of-type {
+		margin: 10px 0;
+	}
+</style>
