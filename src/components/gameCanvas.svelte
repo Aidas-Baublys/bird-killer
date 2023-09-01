@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { onDestroy, onMount } from 'svelte';
 	import Raven from '../classes/raven';
+	import { scoreStore } from '../stores/stores';
 
 	let canvas: HTMLCanvasElement;
 	let ctx: CanvasRenderingContext2D;
@@ -10,6 +11,10 @@
 	let timeToNextRaven = 0;
 	let ravensInterval = 500;
 	let lastTime = 0;
+
+	scoreStore.subscribe((value) => {
+		score = value;
+	});
 
 	function animate(timestamp: number = 0) {
 		ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -62,7 +67,7 @@
 		}
 
 		if (increaseScore > 0) {
-			score++;
+			scoreStore.update((value) => value + 1);
 		}
 	}
 
