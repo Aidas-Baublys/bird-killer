@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { enhance } from '$app/forms';
+	import { base } from '$app/paths';
 	import { page } from '$app/stores';
 </script>
 
@@ -13,7 +14,7 @@
 		<button>Login</button>
 	</form>
 	<button>
-		<a href="/register" class="btn btn-secondary">Register</a>
+		<a href={base + '/register'} class="btn btn-secondary">Register</a>
 	</button>
 	{#if $page.status === 400}
 		<p>{$page.form.message}</p>

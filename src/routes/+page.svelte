@@ -57,10 +57,10 @@
 {:else}
 	<h2>NOT logged in!</h2>
 	<button>
-		<a href="/login" class="btn btn-primary">Login</a>
+		<a href={base + '/login'} class="btn btn-primary">Login</a>
 	</button>
 	<button>
-		<a href="/register" class="btn btn-secondary">Register</a>
+		<a href={base + '/register'} class="btn btn-secondary">Register</a>
 	</button>
 {/if}
 
