@@ -12,6 +12,10 @@
 		<input type="password" name="password" />
 		<button>Login</button>
 	</form>
+	<div>
+		If you where redirected here from register, please check your email for confirmation link. Might
+		be in spam as well.
+	</div>
 	<button>
 		<a href="/register" class="btn btn-secondary">Register</a>
 	</button>

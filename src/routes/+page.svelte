@@ -9,6 +9,7 @@
 	$: ({ supabase, session, score } = data);
 
 	let scoreValue = 0;
+	let showSaveMsg = false;
 
 	scoreStore.subscribe((value) => {
 		scoreValue = value;
@@ -29,6 +30,12 @@
 				.insert({ user_id: session?.user?.id, score: scoreValue })
 				.select();
 		}
+
+		showSaveMsg = true;
+
+		setTimeout(() => {
+			showSaveMsg = false;
+		}, 3000);
 	}
 </script>
 
@@ -52,6 +59,9 @@
 			<button type="submit">Logout</button>
 		</form>
 	</section>
+	{#if showSaveMsg}
+		<div class="score-msg">Score saved!</div>
+	{/if}
 	<GameCanvas />
 {:else}
 	<h2>NOT logged in!</h2>
@@ -70,6 +80,11 @@
 
 	section {
 		display: flex;
+	}
+
+	.score-msg {
+		margin: -8px 10px;
+		font-weight: 900;
 	}
 
 	.score,
