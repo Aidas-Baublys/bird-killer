@@ -2,6 +2,8 @@
 	import { onDestroy, onMount } from 'svelte';
 	import Raven from '../classes/raven';
 	import { scoreStore } from '../stores/stores';
+	import lazer from '../assets/audio/super-mega-lazer.mp3';
+	import ravenDeath from '../assets/audio/raven-dies.wav';
 
 	let canvas: HTMLCanvasElement;
 	let ctx: CanvasRenderingContext2D;
@@ -47,6 +49,11 @@
 	}
 
 	function rmRavenAddScore(e: MouseEvent) {
+		const soundFX = new Audio();
+
+		soundFX.src = lazer;
+		soundFX.play();
+
 		let increaseScore = 0;
 		const clickOnRaven = ctx.getImageData(e.clientX, e.clientY, 1, 1).data;
 
@@ -55,12 +62,17 @@
 				if (
 					!(
 						e.clientX > raven.x &&
-						e.clientX < raven.x + raven.width + 150 &&
+						e.clientX < raven.x + raven.width + 200 &&
 						e.clientY > raven.y &&
-						e.clientY < raven.y + raven.height + 150
+						e.clientY < raven.y + raven.height + 200
 					)
 				) {
+					soundFX.src = ravenDeath;
+					soundFX.volume = 0.7;
+					soundFX.play();
+
 					increaseScore++;
+
 					return true;
 				}
 			});
