@@ -1,8 +1,8 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
 	import { scoreStore } from '../stores/stores';
 	import GameCanvas from '../components/gameCanvas.svelte';
 	import type { PageData } from './$types';
+	import { base } from '$app/paths';
 
 	export let data: PageData;
 
