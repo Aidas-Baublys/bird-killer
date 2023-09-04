@@ -68,7 +68,11 @@ create policy "Individuals can delete their own scores." on scores
 for delete using (auth.uid () = user_id);
 ```
 
-Then clone this repo and create a ```.env.local``` file at the root directory, which should be ```bird-killer``` after cloning. NEVER COMMIT THIS FILE TO ANY REPO! Or any ```.env``` file for that matter. It is meant to hold secrets. 
+Then clone this repo and create a ```.env.local``` file at the root directory, which should be ```bird-killer``` after cloning. 
+
+NEVER COMMIT THIS FILE TO ANY REPO! 
+
+Or any ```.env``` file for that matter. They are meant to hold secrets. The current ```.gitignore``` will protect you from that. 
 
 Populate the file with your url and key from Supabase as strings:
 
