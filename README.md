@@ -6,7 +6,7 @@ A simple game for killing time. Delivered as the final project for Harvard's CS5
 
 Watch the video to see me explain everything in my not-at-all Eastern European accent.
 
-### Check it out live:  (linkas i github pages deploy)
+### Check it out [`live`](https://bird-killer.vercel.app/)
 
 Don't judge the game too much, it has only one mechanic (killing birds with clicks) and poor collision detection. Try to hack it though. I trust my backend provider.
 
@@ -68,11 +68,11 @@ create policy "Individuals can delete their own scores." on scores
 for delete using (auth.uid () = user_id);
 ```
 
-Then clone this repo and create a ```.env.local``` file at the root directory, which should be ```bird-killer``` after cloning. 
+Then clone this repo and create a ```.env.local``` file at the root directory, which should be ```bird-killer``` after cloning.
 
-NEVER COMMIT THIS FILE TO ANY REPO! 
+NEVER COMMIT THIS FILE TO ANY REPO!
 
-Or any ```.env``` file for that matter. They are meant to hold secrets. The current ```.gitignore``` will protect you from that. 
+Or any ```.env``` file for that matter. They are meant to hold secrets. The current ```.gitignore``` will protect you from that.
 
 Populate the file with your url and key from Supabase as strings:
 
@@ -81,7 +81,7 @@ PUBLIC_SUPABASE_URL="your-url"
 PUBLIC_SUPABASE_ANON_KEY="your-key"
 ```
 
-Finally, run these free commands in the terminal: 
+Finally, run these free commands in the terminal:
 
 ```bash
 cd bird-killer
@@ -89,4 +89,4 @@ npm install
 npm run dev
 ```
 
-BUM! Should see something cool at http://localhost:5173/. Happy hacking!:)
+BUM! Should see something cool at <http://localhost:5173/>. Happy hacking!:)
