@@ -8,7 +8,9 @@ Watch the video to see me explain everything in my not-at-all Eastern European a
 
 ### Check it out [`live`](https://bird-killer.vercel.app/)
 
-Don't judge the game too much, it has only one mechanic (killing birds with clicks) and poor collision detection. Try to hack it though. I trust my backend provider.
+Don't judge the game too much, it has only one mechanic (killing birds with clicks) and poor collision detection. Also is rather ugly. Try to hack it though. I trust my backend provider.
+
+Deployment was done via [`Vercel`](https://vercel.com/), which is in essence created for my tech stack. After the code was finished it took like 2 minutes to connect it to this github repo and get a live link, which is updated on every change pushed to main branch.
 
 ## Description
 
