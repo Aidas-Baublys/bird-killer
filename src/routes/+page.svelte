@@ -2,7 +2,6 @@
 	import { scoreStore } from '../stores/stores';
 	import GameCanvas from '../components/gameCanvas.svelte';
 	import type { PageData } from './$types';
-	import { base } from '$app/paths';
 
 	export let data: PageData;
 
@@ -57,10 +56,10 @@
 {:else}
 	<h2>NOT logged in!</h2>
 	<button>
-		<a href={base + '/login'} class="btn btn-primary">Login</a>
+		<a href="/login" class="btn btn-primary">Login</a>
 	</button>
 	<button>
-		<a href={base + '/register'} class="btn btn-secondary">Register</a>
+		<a href="/register" class="btn btn-secondary">Register</a>
 	</button>
 {/if}
 

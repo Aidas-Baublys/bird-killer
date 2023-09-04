@@ -1,6 +1,5 @@
 <script>
 	import { enhance } from '$app/forms';
-	import { base } from '$app/paths';
 </script>
 
 <main>
@@ -13,7 +12,7 @@
 		<button>Register</button>
 	</form>
 	<button>
-		<a href={base + '/login'} class="btn btn-primary">Login</a>
+		<a href="/login" class="btn btn-primary">Login</a>
 	</button>
 </main>
 
