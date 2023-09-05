@@ -1,6 +1,6 @@
 # BIRD KILLER
 
-A simple game for killing time. Delivered as the final project for Harvard's CS50’s Introduction to Computer Science course.
+A simple game for killing time. And birds. Delivered as the final project for Harvard's CS50’s Introduction to Computer Science course.
 
 ### Video Demo:  [`Youtube link`](https://youtu.be/TXqlr0WVuHY)
 
