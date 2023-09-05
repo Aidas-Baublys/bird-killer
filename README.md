@@ -2,9 +2,9 @@
 
 A simple game for killing time. Delivered as the final project for Harvard's CS50’s Introduction to Computer Science course.
 
-### Video Demo:  (linkas i video prisatyma)
+### Video Demo:  [`Youtube link`](https://www.youtube.com/watch?v=TXqlr0WVuHY&t=2s)
 
-Watch the video to see me explain everything in my not-at-all Eastern European accent.
+Watch the video to see me explain everything in my not-at-all Eastern European accent and very low production quality.
 
 ### Check it out [`live`](https://bird-killer.vercel.app/)
 
